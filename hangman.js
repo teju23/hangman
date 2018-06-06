@@ -7,7 +7,9 @@ window.onload = function () {
     'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
     't', 'u', 'v', 'w', 'x', 'y', 'z'
   ];
-  var score=0;
+  var record = {score: 0, totalScore: 0}
+  var score = 0;
+  var totalScore=0;
   var guess = "";
   var guesses ;
   var lives ;
@@ -23,12 +25,14 @@ window.onload = function () {
   var hintWord = document.getElementById('hint');
     var wordHolder = document.getElementById('hold');
     var showScore=document.getElementById('myScore');
+    var showTotal = document.getElementById('myTotal');
   play = () => {
      
        index = Math.floor(Math.random() * category.length);
        choosecategory = category[index];
        word = choosecategory[Math.floor(Math.random() * choosecategory.length)];
       guesses = [];
+      score = 0 ;
       lives = 10;
       counter = 0;
       space = 0;
@@ -81,6 +85,8 @@ window.onload = function () {
         showLives.innerHTML =`Good job`;
         console.log('Good job!!!');
          alert('Congratulations!!!you have found the word');
+         totalScore += score;
+         showTotal.innerHTML=`Your total score: ${totalScore}`;
 
       }
     }
@@ -107,7 +113,6 @@ window.onload = function () {
       showLives.innerHTML = 'Game Over';
       alert('Game over!!');
       } else{
-         
          score = lives * 10;
          showScore.innerHTML = `Your score is: ${score}`;
       }
@@ -116,9 +121,7 @@ window.onload = function () {
  nextword=()=>{
    letters.parentNode.removeChild(letters);
    correct.parentNode.removeChild(correct);
-   play();
-   score += score;
-    
+   play();   
  }
   play();
 }
