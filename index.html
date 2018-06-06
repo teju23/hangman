@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>HANGMAN</title>
+  <link rel="stylesheet" type="text/css" href="hangman.css">
+</head>
+
+<body>
+  <div class="wrapper">
+
+
+    <!-- <button  id='start'>Start</button> -->
+    <h3>Click the alphabets below to guess the word</h3>
+    <p id="buttons"></p>
+    <br>
+    <br>
+    <p id='demo'>Guess the below WORD:
+      <div id='hold'></div>
+    </p>
+    <br>
+    <br>
+    <p id="mylives"></p>
+    <p id="myScore"></p>
+    <tr class="hint">HINT:"The word belongs to the category of food"</tr>
+    <div id="lives"></div>
+    <button onclick="document.getElementById('next').innerHTML =nextword()">NEXT</button>
+
+  </div>
+  </div>
+  <script src="jquery-3.3.1.js"></script>
+  <script src="hangman.js"></script>
+</body>
+
+</html>
