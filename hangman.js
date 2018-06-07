@@ -1,96 +1,153 @@
-window.onload = function () {
-  var category = [
-    ['salad', 'sandwich', 'bread', 'steak', 'tuna', 'steak', 'fish', 'rice', 'spaghetti'],
-    ['gumbo', 'calas', 'juba', 'milkshake']
-  ]
-  var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-    'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-    't', 'u', 'v', 'w', 'x', 'y', 'z'
+window.onload = function() {
+  var category = {
+    food: [
+      'salad',
+      'sandwich',
+      'bread',
+      'steak',
+      'tuna',
+      'steak',
+      'fish',
+      'rice',
+      'spaghetti',
+      'gumbo',
+      'calas',
+      'juba',
+      'milkshake'
+    ],
+    animal: ['cow', 'bull', 'hen', 'cock'],
+    cricketer: ['sehwag', 'sreesanth', 'sachin', 'kohli', 'dhoni']
+  };
+  var alphabet = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z'
   ];
-  var record = {score: 0, totalScore: 0}
+  var record = { score: 0, totalScore: 0 };
   var score = 0;
-  var totalScore=0;
-  var guess = "";
-  var guesses ;
-  var lives ;
+  var totalScore = 0;
+  var guess = '';
+  var guesses;
+  var lives;
   var counter;
-  var space ;
-  const letter="";
-  const guessWord = [];
+  var space;
+  const letter = '';
+  let guessWord = [];
   var word;
-  var choosecategory;
-  let j = "";
+  var choosecategory = category['food'];
+  let j = '';
   var res = '';
   var showLives = document.getElementById('mylives');
   var hintWord = document.getElementById('hint');
-    var wordHolder = document.getElementById('hold');
-    var showScore=document.getElementById('myScore');
-    var showTotal = document.getElementById('myTotal');
+  var wordHolder = document.getElementById('hold');
+  var showScore = document.getElementById('myScore');
+  var showTotal = document.getElementById('myTotal');
+  var images = [
+    'hang_6.gif',
+    'hang_5.gif',
+    'hang_4.gif',
+    'hang_3.gif',
+    'hang_2.gif',
+    'hang_1.gif',
+    'hang_0.gif'
+  ];
+
+  $('#chooseCategory').change(
+    (event = () => {
+      // console.log($('#chooseCategory option:selected').val());
+      choosecategory = category[$('#chooseCategory option:selected').val()];
+      nextword();
+    })
+  );
   play = () => {
-     
-       index = Math.floor(Math.random() * category.length);
-       choosecategory = category[index];
-       word = choosecategory[Math.floor(Math.random() * choosecategory.length)];
-      guesses = [];
-      score = 0 ;
-      lives = 10;
-      counter = 0;
-      space = 0;
-      buttons();
-      result();
-      mesg();
+    if (choosecategory === ' ') {
+      index = Math.floor(Math.random() * Object.keys(category).length);
+      choosecategory = Object.values(category);
+      word = choosecategory[Math.floor(Math.random() * choosecategory.length)];
+    } else {
+      word = choosecategory[Math.floor(Math.random() * choosecategory.length)];
     }
-  result = function () {
-     wordHolder = document.getElementById('hold');
+    guesses = [];
+    guessWord = [];
+    score = 0;
+    lives = 6;
+    counter = 0;
+    space = 0;
+
+    result();
+    buttons();
+    mesg();
+  };
+  result = function() {
+    wordHolder = document.getElementById('hold');
     correct = document.createElement('ul');
     for (var i = 0; i < word.length; i++) {
       correct.setAttribute('id', 'my-word');
       guess = document.createElement('p');
       guess.setAttribute('class', 'guess');
-      if (word[i] === "-") {
-        guess.innerHTML = "-";
+      if (word[i] === '-') {
+        guess.innerHTML = '-';
         space = 1;
       } else {
-        guess.innerHTML = "_";
+        guess.innerHTML = '_';
       }
-      guessWord[i] = "_";
+      guessWord[i] = '_';
       guesses.push(guess);
       wordHolder.appendChild(correct);
       correct.appendChild(guess);
     }
-  }
+  };
 
-  check = function () {
-    list.onclick = function () {
-      var guess = (this.innerHTML);
-      this.setAttribute("class", "active");
+  check = function() {
+    list.onclick = function() {
+      var guess = this.innerHTML;
+      this.setAttribute('class', 'active');
       this.onclick = null;
       for (var i = 0; i < word.length; i++) {
         if (word[i] === guess) {
           guesses[i].innerHTML = guess;
           guessWord[i] = guess;
-          //  console.log(word[i]);
-          //  counter += 1;
         }
       }
-      var j = (word.indexOf(guess));
+      var j = word.indexOf(guess);
       if (j === -1) {
         lives -= 1;
         mesg();
         console.log(lives);
       }
-      var dashIndex = guessWord.indexOf("_");
-      if (dashIndex === -1 && lives>1) {
-        
-        showLives.innerHTML =`Good job`;
+      var dashIndex = guessWord.indexOf('_');
+      if (dashIndex === -1 && lives > 1) {
+        showLives.innerHTML = `Good job`;
         console.log('Good job!!!');
-         alert('Congratulations!!!you have found the word');
-         totalScore += score;
-         showTotal.innerHTML=`Your total score: ${totalScore}`;
-
+        alert('Congratulations!!!you have found the word');
+        totalScore += score;
+        showTotal.innerHTML = `Your total score: ${totalScore}`;
       }
-    }
-  }
+    };
+  };
 
   var buttons = () => {
     mybuttons = document.getElementById('buttons');
@@ -105,23 +162,34 @@ window.onload = function () {
       mybuttons.appendChild(letters);
       letters.appendChild(list);
     }
-  }
+  };
   mesg = () => {
-   showLives.innerHTML = `You have ${lives} lives`;
+    showLives.innerHTML = `You have ${lives} lives`;
+    if (document.getElementById(x) === 'IMG') {
+      var elem = document.getElementById(x);
+      elem.parentElement.removeChild(elem);
+    } else {
+      var x = document.createElement('IMG');
+      x.setAttribute('src', images[lives]);
+      x.setAttribute('width', '300');
+      x.setAttribute('height', '220');
+      x.setAttribute('alt', 'The Hangman');
+      document.body.appendChild(x);
+    }
 
     if (lives < 1) {
       showLives.innerHTML = 'Game Over';
       alert('Game over!!');
-      } else{
-         score = lives * 10;
-         showScore.innerHTML = `Your score is: ${score}`;
-      }
-  }
+    } else {
+      score = lives * 10;
+      showScore.innerHTML = `Your score is: ${score}`;
+    }
+  };
 
- nextword=()=>{
-   letters.parentNode.removeChild(letters);
-   correct.parentNode.removeChild(correct);
-   play();   
- }
+  nextword = () => {
+    letters.parentNode.removeChild(letters);
+    correct.parentNode.removeChild(correct);
+    play();
+  };
   play();
-}
+};

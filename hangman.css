@@ -21,7 +21,7 @@ body {
   width: 35px;
   height: 30px;
   padding-top: 10px;
-  background: #73AD21;
+  background: #73ad21;
   color: #fff;
   cursor: pointer;
   text-align: center;
@@ -32,7 +32,7 @@ body {
   background-color: black;
 }
 
- #hold p{
+#hold p {
   float: left;
   margin: 0 10px 10px 0;
   list-style: none;
@@ -41,6 +41,49 @@ body {
   /* padding-top: 10px; */
   padding-left: 20px;
   /* word-spacing: 30px; */
-   /* white-space: pre; */
+  /* white-space: pre; */
   /* word-spacing: 1000px; */
+}
+.dropbtn {
+  background-color: #3498db;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #2980b9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
 }
