@@ -117,7 +117,6 @@ window.onload = function() {
 
   $('#chooseCategory').change(
     (event = () => {
-      // console.log($('#chooseCategory option:selected').val());
       choosecategory = category[$('#chooseCategory option:selected').val()];
       nextword();
     })
@@ -136,7 +135,6 @@ window.onload = function() {
     lives = 6;
     counter = 0;
     space = 0;
-
     result();
     buttons();
     mesg();
