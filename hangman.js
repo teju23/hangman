@@ -99,12 +99,12 @@ window.onload = () => {
   let choosecategory = category['food'];
   let j = '';
   let res = '';
-  const showLives = document.getElementById('mylives');
-  const hintWord = document.getElementById('hint');
-  const wordHolder = document.getElementById('hold');
-  const showScore = document.getElementById('myScore');
-  const showTotal = document.getElementById('myTotal');
-  const images = [
+  var showLives = document.getElementById('mylives');
+  var hintWord = document.getElementById('hint');
+  var wordHolder = document.getElementById('hold');
+  var showScore = document.getElementById('myScore');
+  var showTotal = document.getElementById('myTotal');
+  var images = [
     'hang_6.gif',
     'hang_5.gif',
     'hang_4.gif',
@@ -158,8 +158,8 @@ window.onload = () => {
     }
   };
 
-  check = () => {
-    list.onclick = () => {
+  check = function() {
+    list.onclick = function() {
       var guess = this.innerHTML;
       this.setAttribute('class', 'active');
       this.onclick = null;
