@@ -15,8 +15,48 @@ window.onload = function() {
       'juba',
       'milkshake'
     ],
-    animal: ['cow', 'bull', 'hen', 'cock'],
-    cricketer: ['sehwag', 'sreesanth', 'sachin', 'kohli', 'dhoni']
+    animal: [
+      'cow',
+      'bull',
+      'hen',
+      'cock',
+      'bitch',
+      'dog',
+      'falcon',
+      'fox',
+      'frog',
+      'fish',
+      'zebra',
+      'goose',
+      'gorilla',
+      'panda',
+      'pig',
+      'hippo',
+      'horse',
+      'hyena',
+      'jaguar',
+      'lobster',
+      'leopard',
+      'monkey',
+      'ostrich',
+      'mouse',
+      'cat',
+      'donkey',
+      'panther',
+      'penguin',
+      'parrot'
+    ],
+    cricketer: [
+      'sehwag',
+      'sreesanth',
+      'sachin',
+      'kohli',
+      'dhoni',
+      'harbhajan',
+      'zaheerkhan',
+      'sureshraina',
+      'virendersehwag'
+    ]
   };
   var alphabet = [
     'a',
@@ -165,11 +205,19 @@ window.onload = function() {
   };
   mesg = () => {
     showLives.innerHTML = `You have ${lives} lives`;
-    if (document.getElementById(x) === 'IMG') {
-      var elem = document.getElementById(x);
-      elem.parentElement.removeChild(elem);
-    } else {
+    var myElem = document.getElementById('Div1');
+    if (myElem === null) {
       var x = document.createElement('IMG');
+      x.setAttribute('id', 'Div1');
+      x.setAttribute('src', images[lives]);
+      x.setAttribute('width', '300');
+      x.setAttribute('height', '220');
+      x.setAttribute('alt', 'The Hangman');
+      document.body.appendChild(x);
+    } else {
+      myElem.parentElement.removeChild(myElem);
+      var x = document.createElement('IMG');
+      x.setAttribute('id', 'Div1');
       x.setAttribute('src', images[lives]);
       x.setAttribute('width', '300');
       x.setAttribute('height', '220');
