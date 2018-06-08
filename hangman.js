@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = () => {
   var category = {
     food: [
       'salad',
@@ -58,7 +58,7 @@ window.onload = function() {
       'virendersehwag'
     ]
   };
-  var alphabet = [
+  const alphabet = [
     'a',
     'b',
     'c',
@@ -86,26 +86,25 @@ window.onload = function() {
     'y',
     'z'
   ];
-  var record = { score: 0, totalScore: 0 };
-  var score = 0;
-  var totalScore = 0;
-  var guess = '';
-  var guesses;
-  var lives;
-  var counter;
-  var space;
+  let score = 0;
+  let totalScore = 0;
+  let guess = '';
+  let guesses;
+  let lives;
+  let counter;
+  let space;
   const letter = '';
   let guessWord = [];
-  var word;
-  var choosecategory = category['food'];
+  let word;
+  let choosecategory = category['food'];
   let j = '';
-  var res = '';
-  var showLives = document.getElementById('mylives');
-  var hintWord = document.getElementById('hint');
-  var wordHolder = document.getElementById('hold');
-  var showScore = document.getElementById('myScore');
-  var showTotal = document.getElementById('myTotal');
-  var images = [
+  let res = '';
+  const showLives = document.getElementById('mylives');
+  const hintWord = document.getElementById('hint');
+  const wordHolder = document.getElementById('hold');
+  const showScore = document.getElementById('myScore');
+  const showTotal = document.getElementById('myTotal');
+  const images = [
     'hang_6.gif',
     'hang_5.gif',
     'hang_4.gif',
@@ -139,7 +138,7 @@ window.onload = function() {
     buttons();
     mesg();
   };
-  result = function() {
+  result = () => {
     wordHolder = document.getElementById('hold');
     correct = document.createElement('ul');
     for (var i = 0; i < word.length; i++) {
@@ -159,8 +158,8 @@ window.onload = function() {
     }
   };
 
-  check = function() {
-    list.onclick = function() {
+  check = () => {
+    list.onclick = () => {
       var guess = this.innerHTML;
       this.setAttribute('class', 'active');
       this.onclick = null;
