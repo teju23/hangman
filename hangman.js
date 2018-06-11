@@ -176,7 +176,7 @@ window.onload = () => {
         console.log(lives);
       }
       var dashIndex = guessWord.indexOf('_');
-      if (dashIndex === -1 && lives > 1) {
+      if (dashIndex === -1 && lives > 0) {
         showLives.innerHTML = `Good job`;
         console.log('Good job!!!');
         alert('Congratulations!!!you have found the word');
