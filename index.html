@@ -4,6 +4,8 @@
 <head>
   <title>HANGMAN</title>
   <link rel="stylesheet" type="text/css" href="hangman.css">
+  <script src="jquery-3.3.1.js"></script>
+  <script src="hangman.js"></script>
 </head>
 
 <body>
@@ -23,17 +25,14 @@
     </p>
     <br>
     <br>
-    <p id="mylives"></p>
-    <p id="myScore"></p>
-    <p id="myTotal"></p>
-    <tr class="hint">HINT:"The word belongs to the category of food"</tr>
+    <div id="mylives"></div>
+    <div id="myScore"></div>
+    <div id="myTotal"></div>
+    <div class="hint">HINT:"The word belongs to the category of food"</div>
     <div id="lives"></div>
     <button onclick="document.getElementById('next').innerHTML =nextword()">NEXT</button>
-
   </div>
-  </div>
-  <script src="jquery-3.3.1.js"></script>
-  <script src="hangman.js"></script>
+  
 </body>
 
 </html>
